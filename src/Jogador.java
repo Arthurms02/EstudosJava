@@ -1,10 +1,11 @@
-import java.time.format.DateTimeFormatter;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Jogador {
     private String nome;
     private String posicao;
-    private DateTimeFormatter dataDeNascimento = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-    private String nacionalidad;
+    private String dataDeNascimento;
+    private String nacionalidade;
     private double altura;
     private double peso;
 
@@ -24,20 +25,20 @@ public class Jogador {
         this.posicao = posicao;
     }
 
-    public DateTimeFormatter getDataDeNascimento() {
+    public String getDataDeNascimento() {
         return dataDeNascimento;
     }
 
     public void setDataDeNascimento(String dataDeNascimento) {
-        this.dataDeNascimento = DateTimeFormatter.ofPattern(dataDeNascimento);
+        this.dataDeNascimento = dataDeNascimento;
     }
 
-    public String getNacionalidad() {
-        return nacionalidad;
+    public String getNacionalidade() {
+        return nacionalidade;
     }
 
-    public void setNacionalidad(String nacionalidad) {
-        this.nacionalidad = nacionalidad;
+    public void setNacionalidade(String nacionalidade) {
+        this.nacionalidade = nacionalidade;
     }
 
     public double getAltura() {
@@ -56,15 +57,23 @@ public class Jogador {
         this.peso = peso;
     }
 
-
     public String imprimirAtributos() {
         return "Jogador = " + nome + "\n" +
                 "posicao = " + posicao + "\n" +
                 "dataDeNascimento = " + dataDeNascimento + "\n" +
-                "nacionalidad = " + nacionalidad + "\n" +
+                "nacionalidade = " + nacionalidade + "\n" +
                 "altura = " + altura + "\n" +
                 "peso = " + peso;
     }
 
-
+    public void mostarIdade(){
+        String padrao = "\\d{4}";
+        Pattern pattern = Pattern.compile(padrao);
+        Matcher matcher = pattern.matcher(getDataDeNascimento());
+        if (matcher.find()) {
+            String idade_str = matcher.group();
+            int idade = Integer.parseInt(idade_str);
+            System.out.println(2025 - idade);
+        }
+    }
 }

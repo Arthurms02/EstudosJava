@@ -1,22 +1,10 @@
 public class Estudos {
     public static void main(String[] args) {
-        Pessoa nova = new Pessoa("Arthur", 23, 1.95);
+        Jogador novoJogador = new Jogador();
 
-        nova.setNome("Arthur Marques");
+        novoJogador.setDataDeNascimento("02/02/2001");
 
-        System.out.println(nova.getAltura());
-
-        Carro meuCarro = new Carro("Fiat", "Uno", 2002, 80.00);
-
-        meuCarro.exibirInformacoes();
-        meuCarro.frear();
-
-
-
-
-
-        for (int i = 1; i < 4; i++) {
-            System.out.println(-i);
-        }
+        novoJogador.mostarIdade();
     }
 }
+
